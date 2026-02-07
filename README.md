@@ -13,7 +13,7 @@ a http server is listening on port 5589 and responds to these routes. the respon
 
 - On first launch, please use the chrome tab to log into kayo
 - `http://<ip>:5589/playlist.m3u` full m3u kayo playlist (12 channels)
-- HDHR emulation (plex) - can be added with 'http://<ip>:5589' 
+- HDHR emulation (plex) - can be added with `http://<ip>:5589`
 
 
 ### development
