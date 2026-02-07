@@ -4,47 +4,17 @@ Capture video and audio from a Chrome tab using the [`chrome.tabCapture`](https:
 
 ### setup
 
-download the latest [release](https://github.com/fancybits/chrome-capture-for-channels/releases) for macOS or Windows
+download the latest [release](https://github.com/tresby/chrome-capture-for-kayo/releases) for macOS or Windows
 
-or run in docker:
-
-```
-docker run -d \
-  --name cc4c \
-  --shm-size=1g \
-  -p 5589:5589 \
-  -p 5900:5900 \
-  -e HOST_VNC_PORT=5900 \
-  -e VIDEO_BITRATE=9500000 \
-  -e AUDIO_BITRATE=256000 \
-  -e FRAMERATE=30 \
-  -e CC4C_PORT=5589 \
-  -e VIDEO_WIDTH=1920 \
-  -e VIDEO_HEIGHT=1080 \
-  -e TZ=US/Mountain \
-  -v cookies:/home/chrome/chromedata/Default/Cookies \
-  -v logins:/home/chrome/chromedata/Default/Login\ Data \
-  -v localstorage:/home/chrome/chromedata/Default/Local\ Storage \
-  -v prefs:/home/chrome/chromedata/Default/Preferences \
-  -v secure:/home/chrome/chromedata/Default/Secure\ Preferences \
-  --restart unless-stopped \
-  fancybits/chrome-capture-for-channels:latest
-```
 
 ### usage
 
-a http server is listening on port 5589 and responds to these routes. the response is a webm stream with h264 video and opus audio.
+a http server is listening on port 5589 and responds to these routes. the response is a webm stream with h264 video and opus audio, that is then remuxed into a mpegts container and the audio is transcoded to aac.
 
-- `/stream/<name>` for stream names registered in the code
-- `/stream?url=<url>` for other arbitrary URLs
+- On first launch, please use the chrome tab to log into kayo
+- `http://<ip>:5589/playlist.m3u` full m3u kayo playlist (12 channels)
+- HDHR emulation (plex) - can be added with 'http://<ip>:5589' 
 
-setup a new Custom Channel using:
-
-```
-#EXTM3U
-#EXTINF:-1 channel-id="weatherscan",Weatherscan
-chrome://x.x.x.x:5589/stream?url=https://weatherscan.net
-```
 
 ### development
 
@@ -73,3 +43,16 @@ cd chrome-capture-for-channels
 bun install
 bun main.js
 ```
+
+#### upcoming
+
+- Config webui (bitrate, resolution, start delay, kayo log in, Tuner count)
+- Potential Binge support
+- Potential Aus FTA channel support
+
+#### notes
+
+This could break at any point if kayo change their website. 
+This is only intended as a way to get an EPG style layout for kayo live channels, 
+will likely stop updating if a EPG was bought to the Kayo Apple TV app. 
+Please only use this for personal consumption - not distributing streams (not the intended purpose)
