@@ -1,4 +1,4 @@
-## chrome-capture-for-channels
+## chrome-capture-for-kayo
 
 Capture video and audio from a Chrome tab using the [`chrome.tabCapture`](https://developer.chrome.com/docs/extensions/reference/tabCapture/) API. Built on [Puppeteer](https://pptr.dev/) and [puppeteer-stream](https://github.com/SamuelScheit/puppeteer-stream)
 
