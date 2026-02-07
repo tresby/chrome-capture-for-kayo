@@ -9,6 +9,8 @@ download the latest [release](https://github.com/tresby/chrome-capture-for-kayo/
 
 ### usage
 
+Requiremnts (run command in terminal): npm install puppeteer-core puppeteer-stream express morgan yargs console-stamp
+
 a http server is listening on port 5589 and responds to these routes. the response is a webm stream with h264 video and opus audio, that is then remuxed into a mpegts container and the audio is transcoded to aac.
 
 - On first launch, please use the chrome tab to log into kayo
@@ -26,8 +28,9 @@ to setup a development environment where you can edit and run `main.js`:
 winget install -e --id Git.Git
 winget install -e --id Oven-sh.Bun
 
-git clone https://github.com/fancybits/chrome-capture-for-channels
+git clone https://github.com/tresby/chrome-capture-for-kayo
 cd chrome-capture-for-channels
+npm install puppeteer-core puppeteer-stream express morgan yargs console-stamp
 bun install
 bun main.js
 ```
@@ -38,8 +41,9 @@ bun main.js
 brew install git
 brew install oven-sh/bun/bun
 
-git clone https://github.com/fancybits/chrome-capture-for-channels
+git clone https://github.com/tresby/chrome-capture-for-kayo
 cd chrome-capture-for-channels
+npm install puppeteer-core puppeteer-stream express morgan yargs console-stamp
 bun install
 bun main.js
 ```
